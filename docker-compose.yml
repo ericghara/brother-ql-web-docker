@@ -1,0 +1,16 @@
+version: "3.9"
+
+#  To configure brother_ql_web modify config.json instead of 'command' arguments
+#  Known bug, when printer is off when container starts it wont detect it
+
+services:
+  brother-ql-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: pklaus/brother_ql_web:latest
+    container_name: brother-ql-web
+    restart: always
+    ports: ["8013:8013"]
+    devices:
+        - /dev/usb:/dev/usb
